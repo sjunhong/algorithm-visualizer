@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { Trace } from '../algorithms/helper';
 import Bar from './Bar';
 
@@ -24,7 +25,16 @@ const genBarGraph = ({ array, sortedIndices, searched, selected, swaped }: Trace
 };
 
 const SortChart = ({ array, sortedIndices, searched, selected, swaped }: Trace) => {
-  return <>{genBarGraph({ array, sortedIndices, searched, selected, swaped })}</>;
+  return <Wrapper>{genBarGraph({ array, sortedIndices, searched, selected, swaped })}</Wrapper>;
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  background: white;
+`;
 
 export default SortChart;

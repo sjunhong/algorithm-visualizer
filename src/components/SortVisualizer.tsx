@@ -56,7 +56,7 @@ function SortingVisualizer(props: SortingVisualizerProps) {
         (item) => {
           _changeVisualState(item);
         },
-        i * 5,
+        i * 30,
         trace,
       );
     });
@@ -80,11 +80,15 @@ function SortingVisualizer(props: SortingVisualizerProps) {
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
-  width: 100vw;
-  height: 100vh;
-  background: grey;
+  align-items: center;
+  width: 90%;
+  height: 70%;
+  background: white;
+  padding: 10px;
+  border: 3px solid #5f5f5f;
+  border-radius: 10px;
 `;
 
 export default SortingVisualizer;

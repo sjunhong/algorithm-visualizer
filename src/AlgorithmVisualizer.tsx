@@ -1,60 +1,40 @@
 import { trace } from 'console';
 import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { NavigationBarItem } from 'typescript';
 import { addTrace, getSortedIndicies, newTrace, swap, TraceArray } from './algorithms/helper';
+import { SelectionSort } from './algorithms/SelectionSort';
+import Navbar from './components/Navbar';
 import SortingVisualizer from './components/SortVisualizer';
+
+interface Algorithms {
+  [name: string]: (arr: number[]) => TraceArray;
+}
 
 function AlgorithmVisualizer() {
   const [array, setArray] = useState<number[]>([]);
   const [arrayLength, setArrayLength] = useState<number>(100);
   const [traces, setTraces] = useState<TraceArray>([]);
+  const [algorithm, setAlgorithm] = useState<string>('Selection Sort');
+
+  const ALGORITHMS: Algorithms = {
+    'Selection Sort': SelectionSort,
+  };
 
   const resetArray = (arrayLength: number) => {
     const max = 1000;
     const min = 5;
+    setTraces([]);
+    console.log('set trace to []');
     setArray([...Array(arrayLength)].map(() => Math.floor(Math.random() * (max - min + 1)) + min));
   };
 
-  const handleSelectionSort = () => {
-    // selectionSort(array);
-    createTraces();
+  const handleSetAlgorithm = (name: string) => {
+    setAlgorithm(name);
   };
 
-  const selectionSort = (arr: number[]) => {
-    const trace = newTrace(arr);
-
-    let i, j, min_idx;
-    const n = arr.length;
-    for (i = 0; i < n - 1; i++) {
-      min_idx = i;
-      for (j = i + 1; j < n; j++) {
-        // visualize searching index
-        // sorted, searched, selected, swaped
-        addTrace(trace, arr, getSortedIndicies(trace), [j], [min_idx]);
-
-        if (arr[j] < arr[min_idx]) {
-          addTrace(trace, arr, getSortedIndicies(trace), [j], [min_idx]);
-
-          min_idx = j;
-
-          //visualize selected index
-          addTrace(trace, arr, getSortedIndicies(trace), [j], [min_idx]);
-        }
-      }
-
-      //visualize swaping indices
-      addTrace(trace, arr, getSortedIndicies(trace), [], [], [i, min_idx]);
-
-      swap(arr, i, min_idx);
-
-      //visualize sorted indices
-      addTrace(trace, arr, [...getSortedIndicies(trace), i]);
-    }
-
-    //visualize sorted indices
-    addTrace(trace, arr, [...getSortedIndicies(trace), n - 1]);
-
-    return trace;
+  const handleSetArrayLength = (arrayLength: number) => {
+    setArrayLength(arrayLength);
   };
 
   const handleResetArray = () => {
@@ -62,43 +42,43 @@ function AlgorithmVisualizer() {
   };
 
   const createTraces = () => {
-    const sorted = selectionSort([...array]);
-    if (sorted) {
+    const sort = ALGORITHMS[algorithm];
+
+    if (sort) {
+      const sorted = sort([...array]);
       setTraces(sorted);
+      console.log('create trace');
     }
   };
 
   useEffect(() => {
     resetArray(arrayLength);
-    console.log('mounted');
   }, [arrayLength]);
+
+  useEffect(() => {
+    createTraces();
+  }, [array]);
 
   return (
     <Wrapper>
+      <Navbar
+        handleResetArray={handleResetArray}
+        handleSetAlgorithm={handleSetAlgorithm}
+        handleSetArrayLengh={handleSetArrayLength}
+      />
       <SortingVisualizer array={array} traces={traces} />
-      <ControllerWrapper>
-        <button onClick={handleResetArray}>Reset Array</button>
-        <button onClick={handleSelectionSort}>Set Selection Sort</button>
-      </ControllerWrapper>
     </Wrapper>
   );
 }
 
-const ControllerWrapper = styled.div`
-  display: flex;
-  width: 100vw;
-  height: 100px;
-  background: black;
-`;
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-start;
+  align-items: center;
   width: 100vw;
   height: 100vh;
-  background: grey;
+  background: white;
 `;
 
 export default AlgorithmVisualizer;

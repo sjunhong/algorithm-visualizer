@@ -11,7 +11,7 @@ interface BarProps {
 }
 
 const Bar = ({ width, height, IsSorted, IsSearched, IsSelected, IsSwaped }: BarProps) => {
-  let color = 'black';
+  let color = '#5f5f5f';
   if (IsSorted) {
     color = 'green';
   } else if (IsSwaped) {
@@ -38,7 +38,7 @@ const Wrapper = styled.div.attrs(({ $width, $height, $color }: WrapperProps) => 
     background: $color,
   },
 }))<WrapperProps>`
-  border: 1px solid white;
+  border: 0.1px solid white;
 `;
 
 export default Bar;
