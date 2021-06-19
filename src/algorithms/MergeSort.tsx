@@ -7,11 +7,6 @@ export const MergeSort = (arr: number[]): TraceArray => {
     return traces;
   }
   const sorted = MergeSortHelper(traces, arr, 0, arr.length);
-  addTrace(
-    traces,
-    arr,
-    [...Array(arr.length).keys()].map((index: number) => index++),
-  );
   return traces;
 };
 
@@ -49,7 +44,8 @@ const merge = (traces: TraceArray, arr: number[], start: number, middle: number,
   let rightIndex = 0;
   let mainIndex = 0;
   while (leftIndex < leftHalf.length && rightIndex < rightHalf.length) {
-    addTrace(traces, arr, getSortedIndicies(traces), [], [], [start + mainIndex]);
+    // addTrace(traces, arr, getSortedIndicies(traces), [], [], [start + mainIndex]);
+    addTrace(traces, arr, getSortedIndicies(traces), [], [], [start + leftIndex, middle + rightIndex]);
 
     if (leftHalf[leftIndex] <= rightHalf[rightIndex]) {
       arr[start + mainIndex] = leftHalf[leftIndex];
@@ -62,8 +58,10 @@ const merge = (traces: TraceArray, arr: number[], start: number, middle: number,
     addTrace(traces, arr, [...getSortedIndicies(traces), start + mainIndex]);
     mainIndex += 1;
   }
+  addTrace(traces, arr, [...getSortedIndicies(traces), start + mainIndex]);
   while (leftIndex < leftHalf.length) {
-    addTrace(traces, arr, getSortedIndicies(traces), [], [], [start + mainIndex]);
+    // addTrace(traces, arr, getSortedIndicies(traces), [], [], [start + mainIndex]);
+    addTrace(traces, arr, getSortedIndicies(traces), [], [], [start + leftIndex]);
 
     arr[start + mainIndex] = leftHalf[leftIndex];
     leftIndex += 1;
@@ -72,7 +70,8 @@ const merge = (traces: TraceArray, arr: number[], start: number, middle: number,
     addTrace(traces, arr, [...getSortedIndicies(traces), start + mainIndex]);
   }
   while (rightIndex < rightHalf.length) {
-    addTrace(traces, arr, getSortedIndicies(traces), [], [], [start + mainIndex]);
+    // addTrace(traces, arr, getSortedIndicies(traces), [], [], [start + mainIndex]);
+    addTrace(traces, arr, getSortedIndicies(traces), [], [], [middle + rightIndex]);
 
     arr[start + mainIndex] = rightHalf[rightIndex];
     rightIndex += 1;

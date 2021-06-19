@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import styles from './Bar.module.css';
 
 interface BarProps {
   width: number;
@@ -12,14 +11,22 @@ interface BarProps {
 
 const Bar = ({ width, height, IsSorted, IsSearched, IsSelected, IsSwaped }: BarProps) => {
   let color = '#5f5f5f';
-  if (IsSorted) {
-    color = 'green';
-  } else if (IsSwaped) {
-    color = 'red';
+  if (IsSwaped) {
+    //magenta
+    color = '#D81159';
+    //E54F6D
   } else if (IsSelected) {
-    color = 'yellow';
+    //yellow
+    color = '#FFD166';
+    //FA7921
   } else if (IsSearched) {
-    color = 'blue';
+    //blue
+    //#064789, 1C5D99, 448FA3, 68C5DB
+    color = '#118AB2';
+  } else if (IsSorted) {
+    //green
+    color = '#06D6A0';
+    //379392, 1D7874, 49A078, 049A8F
   }
 
   return <Wrapper $width={width} $height={height} $color={color}></Wrapper>;

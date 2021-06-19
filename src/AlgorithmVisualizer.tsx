@@ -27,7 +27,7 @@ function AlgorithmVisualizer() {
 
   const resetArray = (arrayLength: number) => {
     const max = 1000;
-    const min = 5;
+    const min = 10;
     setTraces([]);
     console.log('set trace to []');
     setArray([...Array(arrayLength)].map(() => Math.floor(Math.random() * (max - min + 1)) + min));
