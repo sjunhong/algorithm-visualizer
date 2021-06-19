@@ -2,7 +2,9 @@ import { trace } from 'console';
 import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { NavigationBarItem } from 'typescript';
+import { BubbleSort } from './algorithms/BubbleSort';
 import { addTrace, getSortedIndicies, newTrace, swap, TraceArray } from './algorithms/helper';
+import { MergeSort } from './algorithms/MergeSort';
 import { SelectionSort } from './algorithms/SelectionSort';
 import Navbar from './components/Navbar';
 import SortingVisualizer from './components/SortVisualizer';
@@ -19,6 +21,8 @@ function AlgorithmVisualizer() {
 
   const ALGORITHMS: Algorithms = {
     'Selection Sort': SelectionSort,
+    'Bubble Sort': BubbleSort,
+    'Merge Sort': MergeSort,
   };
 
   const resetArray = (arrayLength: number) => {
@@ -50,6 +54,12 @@ function AlgorithmVisualizer() {
       console.log('create trace');
     }
   };
+
+  useEffect(() => {
+    setTraces([]);
+    console.log('algo changed, resetting the traces');
+    createTraces();
+  }, [algorithm]);
 
   useEffect(() => {
     resetArray(arrayLength);

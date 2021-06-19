@@ -12,7 +12,7 @@ function Navbar(props: VisualizerControllerProps) {
     <Wrapper>
       <img
         src={`${process.env.PUBLIC_URL}/algorithm-visualizer-logo.svg`}
-        style={{ height: '40px', padding: '0 0 0 10px ' }}
+        style={{ height: '70px', padding: '0 0 0 20px ' }}
       />
       <VisualizerController
         handleResetArray={props.handleResetArray}
