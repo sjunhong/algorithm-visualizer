@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { NavigationBarItem } from 'typescript';
 import { BubbleSort } from './algorithms/BubbleSort';
 import { addTrace, getSortedIndicies, newTrace, swap, TraceArray } from './algorithms/helper';
+import { InsertionSort } from './algorithms/InsertionSort';
 import { MergeSort } from './algorithms/MergeSort';
 import { SelectionSort } from './algorithms/SelectionSort';
 import Navbar from './components/Navbar';
@@ -22,6 +23,7 @@ function AlgorithmVisualizer() {
   const ALGORITHMS: Algorithms = {
     'Selection Sort': SelectionSort,
     'Bubble Sort': BubbleSort,
+    'Insertion Sort': InsertionSort,
     'Merge Sort': MergeSort,
   };
 

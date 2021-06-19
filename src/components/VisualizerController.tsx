@@ -25,6 +25,9 @@ function VisualizerController(props: VisualizerControllerProps) {
           <MenuItem value={'Bubble Sort'}>
             <span>Bubble Sort</span>
           </MenuItem>
+          <MenuItem value={'Insertion Sort'}>
+            <span>Insertion Sort</span>
+          </MenuItem>
           <MenuItem value={'Merge Sort'}>
             <span>Merge Sort</span>
           </MenuItem>
