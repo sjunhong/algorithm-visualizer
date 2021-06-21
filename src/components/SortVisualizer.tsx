@@ -64,7 +64,7 @@ function SortingVisualizer(props: SortingVisualizerProps) {
 
   const run = () => {
     const timeoutArray: NodeJS.Timeout[] = [];
-    const timer = 20;
+    const timer = 30;
 
     traces.forEach((trace, i) => {
       const timeoutId = setTimeout(

@@ -1,4 +1,4 @@
-import AlgorithmVisualizer from './AlgorithmVisualizer';
+import AlgorithmVisualizer from './components/AlgorithmVisualizer';
 
 function App() {
   return <AlgorithmVisualizer />;

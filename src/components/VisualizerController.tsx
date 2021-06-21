@@ -31,6 +31,9 @@ function VisualizerController(props: VisualizerControllerProps) {
           <MenuItem value={'Merge Sort'}>
             <span>Merge Sort</span>
           </MenuItem>
+          <MenuItem value={'Quick Sort'}>
+            <span>Quick Sort</span>
+          </MenuItem>
         </Select>
       </FormControl>
       <FormControl>

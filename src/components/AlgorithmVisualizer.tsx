@@ -2,13 +2,14 @@ import { trace } from 'console';
 import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { NavigationBarItem } from 'typescript';
-import { BubbleSort } from './algorithms/BubbleSort';
-import { addTrace, getSortedIndicies, newTrace, swap, TraceArray } from './algorithms/helper';
-import { InsertionSort } from './algorithms/InsertionSort';
-import { MergeSort } from './algorithms/MergeSort';
-import { SelectionSort } from './algorithms/SelectionSort';
-import Navbar from './components/Navbar';
-import SortingVisualizer from './components/SortVisualizer';
+import { BubbleSort } from '../algorithms/BubbleSort';
+import { addTrace, getSortedIndicies, newTrace, swap, TraceArray } from '../algorithms/helper';
+import { InsertionSort } from '../algorithms/InsertionSort';
+import { MergeSort } from '../algorithms/MergeSort';
+import { QuickSort } from '../algorithms/QuickSort';
+import { SelectionSort } from '../algorithms/SelectionSort';
+import Navbar from './Navbar';
+import SortingVisualizer from './SortVisualizer';
 
 interface Algorithms {
   [name: string]: (arr: number[]) => TraceArray;
@@ -25,6 +26,7 @@ function AlgorithmVisualizer() {
     'Bubble Sort': BubbleSort,
     'Insertion Sort': InsertionSort,
     'Merge Sort': MergeSort,
+    'Quick Sort': QuickSort,
   };
 
   const resetArray = (arrayLength: number) => {
