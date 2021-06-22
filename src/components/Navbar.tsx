@@ -7,7 +7,7 @@ export interface VisualizerControllerProps {
   handleSetArrayLengh: (arrayLength: number) => void;
 }
 
-function Navbar(props: VisualizerControllerProps) {
+function Navbar(props: VisualizerControllerProps): JSX.Element {
   return (
     <Wrapper>
       <img

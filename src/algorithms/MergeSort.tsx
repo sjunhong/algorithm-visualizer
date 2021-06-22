@@ -6,7 +6,7 @@ export const MergeSort = (arr: number[]): TraceArray => {
   if (arr === []) {
     return traces;
   }
-  const sorted = MergeSortHelper(traces, arr, 0, arr.length);
+  MergeSortHelper(traces, arr, 0, arr.length);
   return traces;
 };
 

@@ -1,5 +1,5 @@
 import { Button, FormControl, MenuItem, Select } from '@material-ui/core';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { VisualizerControllerProps } from './Navbar';
 

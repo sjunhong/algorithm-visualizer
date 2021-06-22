@@ -20,28 +20,28 @@ const quickSortHelper = (traces: TraceArray, arr: number[], low: number, high: n
   return traces;
 };
 
-const partition1 = (traces: TraceArray, arr: number[], low: number, high: number) => {
-  let swapIndex = low;
-  const pivot = arr[high];
+// const partition1 = (traces: TraceArray, arr: number[], low: number, high: number) => {
+//   let swapIndex = low;
+//   const pivot = arr[high];
 
-  while (low < high) {
-    // console.log('swaping', low, high);
-    addTrace(traces, arr, getSortedIndicies(traces), [low, swapIndex], [high]);
-    if (arr[low] < pivot) {
-      addTrace(traces, arr, getSortedIndicies(traces), [], [high], [low, swapIndex]);
-      swap(arr, low, swapIndex);
-      addTrace(traces, arr, getSortedIndicies(traces), [], [high], [low, swapIndex]);
-      swapIndex += 1;
-    }
-    low += 1;
-  }
-  addTrace(traces, arr, getSortedIndicies(traces), [], [], [high, swapIndex]);
-  swap(arr, swapIndex, high);
+//   while (low < high) {
+//     // console.log('swaping', low, high);
+//     addTrace(traces, arr, getSortedIndicies(traces), [low, swapIndex], [high]);
+//     if (arr[low] < pivot) {
+//       addTrace(traces, arr, getSortedIndicies(traces), [], [high], [low, swapIndex]);
+//       swap(arr, low, swapIndex);
+//       addTrace(traces, arr, getSortedIndicies(traces), [], [high], [low, swapIndex]);
+//       swapIndex += 1;
+//     }
+//     low += 1;
+//   }
+//   addTrace(traces, arr, getSortedIndicies(traces), [], [], [high, swapIndex]);
+//   swap(arr, swapIndex, high);
 
-  addTrace(traces, arr, [...getSortedIndicies(traces), swapIndex], [], [], []);
+//   addTrace(traces, arr, [...getSortedIndicies(traces), swapIndex], [], [], []);
 
-  return swapIndex;
-};
+//   return swapIndex;
+// };
 
 const partition2 = (traces: TraceArray, arr: number[], low: number, high: number) => {
   const pivotIndex = high;

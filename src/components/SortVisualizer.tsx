@@ -9,7 +9,7 @@ interface SortingVisualizerProps {
   traces: TraceArray;
 }
 
-function SortingVisualizer(props: SortingVisualizerProps) {
+function SortingVisualizer(props: SortingVisualizerProps): JSX.Element {
   const [visualState, setVisualState] = useState<Trace>({
     array: [],
     sortedIndices: [],

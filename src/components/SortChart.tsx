@@ -24,7 +24,7 @@ const genBarGraph = ({ array, sortedIndices, searched, selected, swaped }: Trace
   });
 };
 
-const SortChart = ({ array, sortedIndices, searched, selected, swaped }: Trace) => {
+const SortChart = ({ array, sortedIndices, searched, selected, swaped }: Trace): JSX.Element => {
   return <Wrapper>{genBarGraph({ array, sortedIndices, searched, selected, swaped })}</Wrapper>;
 };
 
