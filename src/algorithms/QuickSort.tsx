@@ -40,7 +40,6 @@ const partition1 = (traces: TraceArray, arr: number[], low: number, high: number
 
   addTrace(traces, arr, [...getSortedIndicies(traces), swapIndex], [], [], []);
 
-  console.log('end partitioning', low, high, swapIndex);
   return swapIndex;
 };
 
@@ -68,6 +67,5 @@ const partition2 = (traces: TraceArray, arr: number[], low: number, high: number
   swap(arr, pivotIndex, low);
   addTrace(traces, arr, [...getSortedIndicies(traces), low], [], [], []);
 
-  console.log('end partitioning', low, high, pivotIndex);
   return low;
 };

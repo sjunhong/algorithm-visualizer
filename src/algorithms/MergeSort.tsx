@@ -1,4 +1,4 @@
-import { addTrace, getSortedIndicies, newTrace, swap, TraceArray } from './helper';
+import { addTrace, getSortedIndicies, newTrace, TraceArray } from './helper';
 
 export const MergeSort = (arr: number[]): TraceArray => {
   const traces = newTrace(arr);

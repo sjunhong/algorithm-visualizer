@@ -1,4 +1,4 @@
-import { Button, FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { Button, FormControl, MenuItem, Select } from '@material-ui/core';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { VisualizerControllerProps } from './Navbar';
@@ -72,7 +72,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 30%;
+  width: 500px;
   margin: 0 30px;
 
   span {

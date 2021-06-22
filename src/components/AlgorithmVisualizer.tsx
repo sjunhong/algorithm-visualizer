@@ -1,9 +1,7 @@
-import { trace } from 'console';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { NavigationBarItem } from 'typescript';
 import { BubbleSort } from '../algorithms/BubbleSort';
-import { addTrace, getSortedIndicies, newTrace, swap, TraceArray } from '../algorithms/helper';
+import { TraceArray } from '../algorithms/helper';
 import { InsertionSort } from '../algorithms/InsertionSort';
 import { MergeSort } from '../algorithms/MergeSort';
 import { QuickSort } from '../algorithms/QuickSort';
