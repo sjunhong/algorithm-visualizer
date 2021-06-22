@@ -9,7 +9,7 @@ interface BarProps {
   IsSwaped: boolean;
 }
 
-const Bar = ({ width, height, IsSorted, IsSearched, IsSelected, IsSwaped }: BarProps) => {
+const Bar = ({ width, height, IsSorted, IsSearched, IsSelected, IsSwaped }: BarProps): JSX.Element => {
   let color = '#5f5f5f';
   if (IsSwaped) {
     //magenta

@@ -13,7 +13,7 @@ interface Algorithms {
   [name: string]: (arr: number[]) => TraceArray;
 }
 
-function AlgorithmVisualizer() {
+function AlgorithmVisualizer(): JSX.Element {
   const [array, setArray] = useState<number[]>([]);
   const [arrayLength, setArrayLength] = useState<number>(100);
   const [traces, setTraces] = useState<TraceArray>([]);

@@ -1,6 +1,6 @@
 import AlgorithmVisualizer from './components/AlgorithmVisualizer';
 
-function App() {
+function App(): JSX.Element {
   return <AlgorithmVisualizer />;
 }
 

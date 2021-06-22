@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { VisualizerControllerProps } from './Navbar';
 
-function VisualizerController(props: VisualizerControllerProps) {
+function VisualizerController(props: VisualizerControllerProps): JSX.Element {
   const [algorithm, setAlgorithm] = useState<string>('Selection Sort');
   const [arrayLength, setArrayLength] = useState<number>(100);
   return (
