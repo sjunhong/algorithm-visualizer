@@ -4,10 +4,10 @@
 
 Web Application to viusalize the various algorithms.
 
+The app is deployed using GitHub Pages and GitHub Actions for CI here: https://sjunhong.github.io/algorithm-visualizer/
+
 ![](./public/algorithm-visualizer.png)
 Currently only sorting algorithms (Selection Sort, Bubble Sort, Insertion Sort, Merge Sort, Quick Sort) are available. Planning to add path-finding algorithms later.
-
-The app is deployed using GitHub Pages and GitHub Actions for CI here: !()[]
 
 ### Logo
 
