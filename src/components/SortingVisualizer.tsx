@@ -100,28 +100,37 @@ function SortingVisualizer(props: SortingVisualizerProps): JSX.Element {
         />
       </ChartWrapper>
       <ButtonWrapper>
-        <Button variant="contained" onClick={run} style={{ width: '100px', height: '50px', margin: '10px' }}>
-          Run
+        <Button variant="contained" onClick={run} style={ButtonStyle}>
+          <span>Run</span>
         </Button>
-        <Button variant="contained" onClick={reset} style={{ width: '100px', height: '50px', margin: '10px' }}>
-          reset
+        <Button variant="contained" onClick={reset} style={ButtonStyle}>
+          <span>Reset</span>
         </Button>
       </ButtonWrapper>
     </Wrapper>
   );
 }
 
+const ButtonStyle = { width: '10%', height: '100%', margin: '1%' };
+
+const Wrapper = styled.div`
+  width: 100vw;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
   height: 10%;
-  padding: 10px;
-`;
-
-const Wrapper = styled.div`
-  width: 90%;
-  height: 70%;
+  padding: 20px;
+  span {
+    font-size: 70px;
+  }
 `;
 
 const ChartWrapper = styled.div`
@@ -129,11 +138,11 @@ const ChartWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 95%;
   height: 90%;
 
   background: white;
-  padding: 10px;
+  padding: 1%;
   border: 3px solid #5f5f5f;
   border-radius: 10px;
 `;

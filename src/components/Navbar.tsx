@@ -10,10 +10,7 @@ export interface VisualizerControllerProps {
 function Navbar(props: VisualizerControllerProps): JSX.Element {
   return (
     <Wrapper>
-      <img
-        src={`${process.env.PUBLIC_URL}/algorithm-visualizer-logo.svg`}
-        style={{ height: '70px', padding: '0 0 0 20px ' }}
-      />
+      <img src={`${process.env.PUBLIC_URL}/logo_for_kiosk.svg`} style={{ height: '100%', padding: '20px 20px ' }} />
       <VisualizerController
         handleResetArray={props.handleResetArray}
         handleSetAlgorithm={props.handleSetAlgorithm}
@@ -28,7 +25,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100vw;
-  height: 100px;
+  height: 10%;
   background: white;
 `;
 

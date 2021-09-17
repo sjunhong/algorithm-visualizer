@@ -6,9 +6,12 @@ import { VisualizerControllerProps } from './Navbar';
 function VisualizerController(props: VisualizerControllerProps): JSX.Element {
   const [algorithm, setAlgorithm] = useState<string>('Selection Sort');
   const [arrayLength, setArrayLength] = useState<number>(100);
+  const algorithms = ['Selection Sort', 'Bubble Sort', 'Insertion Sort', 'Merge Sort', 'Quick Sort'];
+  const arrayLengths = [10, 50, 100, 200];
+
   return (
     <Wrapper>
-      <FormControl>
+      <FormControl margin="none">
         <Select
           value={algorithm}
           onChange={(e) => {
@@ -17,26 +20,29 @@ function VisualizerController(props: VisualizerControllerProps): JSX.Element {
           }}
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
-          style={{ minWidth: '150px' }}
+          style={{ fontSize: '6rem', width: '500px', textAlign: 'center' }}
+          autoWidth={true}
         >
-          <MenuItem value={'Selection Sort'}>
-            <span>Selection Sort</span>
-          </MenuItem>
-          <MenuItem value={'Bubble Sort'}>
-            <span>Bubble Sort</span>
-          </MenuItem>
-          <MenuItem value={'Insertion Sort'}>
-            <span>Insertion Sort</span>
-          </MenuItem>
-          <MenuItem value={'Merge Sort'}>
-            <span>Merge Sort</span>
-          </MenuItem>
-          <MenuItem value={'Quick Sort'}>
-            <span>Quick Sort</span>
-          </MenuItem>
+          {algorithms.map((algorithm) => (
+            <MenuItem key={algorithm} value={algorithm}>
+              <span
+                style={{
+                  display: 'flex',
+                  fontSize: '4rem',
+                  width: '500px',
+                  height: '150px',
+                  fontFamily: 'Roboto',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                {algorithm}
+              </span>
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
-      <FormControl>
+      <FormControl margin="none">
         <Select
           value={arrayLength}
           onChange={(e) => {
@@ -45,24 +51,30 @@ function VisualizerController(props: VisualizerControllerProps): JSX.Element {
           }}
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
-          style={{ minWidth: '80px' }}
+          style={{ fontSize: '6rem', width: '300px', textAlign: 'center' }}
+          autoWidth={true}
         >
-          <MenuItem value={10}>
-            <span>10</span>
-          </MenuItem>
-          <MenuItem value={50}>
-            <span>50</span>
-          </MenuItem>
-          <MenuItem value={100}>
-            <span>100</span>
-          </MenuItem>
-          <MenuItem value={200}>
-            <span>200</span>
-          </MenuItem>
+          {arrayLengths.map((arrayLength) => (
+            <MenuItem key={arrayLength} value={arrayLength}>
+              <span
+                style={{
+                  display: 'flex',
+                  fontSize: '4rem',
+                  width: '300px',
+                  height: '150px',
+                  fontFamily: 'Roboto',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                {arrayLength}
+              </span>
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
-      <Button variant="contained" onClick={props.handleResetArray}>
-        Reset Array
+      <Button variant="contained" onClick={props.handleResetArray} style={{ minWidth: '400px' }}>
+        <span>Reset Array</span>
       </Button>
     </Wrapper>
   );
@@ -72,11 +84,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 500px;
-  margin: 0 30px;
+  width: 40%;
+  margin: 0 2.5% 0 0;
 
   span {
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 70px;
     // padding-left: 10px;
   }
 `;

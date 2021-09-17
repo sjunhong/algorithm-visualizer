@@ -7,7 +7,7 @@ import { MergeSort } from '../algorithms/MergeSort';
 import { QuickSort } from '../algorithms/QuickSort';
 import { SelectionSort } from '../algorithms/SelectionSort';
 import Navbar from './Navbar';
-import SortingVisualizer from './SortVisualizer';
+import SortingVisualizer from './SortingVisualizer';
 
 interface Algorithms {
   [name: string]: (arr: number[]) => TraceArray;
