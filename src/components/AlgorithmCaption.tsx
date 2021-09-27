@@ -54,7 +54,7 @@ const Wrapper = styled.div`
   width: 50vw;
   align-items: start;
   justify-content: space-between;
-  padding: 0 8vw 0 8vw;
+  padding: 0 5vw 0 5vw;
 
   div {
     font-size: 1.4vw;
@@ -64,7 +64,7 @@ const Wrapper = styled.div`
   span {
     font-size: 1.4vw;
     font-weight: 500;
-    padding-left: 6vw;
+    padding-left: 9vw;
   }
 `;
 

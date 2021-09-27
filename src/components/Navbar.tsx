@@ -11,7 +11,10 @@ export interface VisualizerControllerProps {
 function Navbar(props: VisualizerControllerProps): JSX.Element {
   return (
     <Wrapper>
-      <img src={`${process.env.PUBLIC_URL}/logo_for_kiosk.svg`} style={{ height: '100%', padding: '0.2vw' }} />
+      <img
+        src={`${process.env.PUBLIC_URL}/logo_for_kiosk.svg`}
+        style={{ width: '40vw', height: '10vh', padding: '0.1vw 0 0 0' }}
+      />
       <VisualizerController
         handleResetArray={props.handleResetArray}
         handleSetAlgorithm={props.handleSetAlgorithm}
