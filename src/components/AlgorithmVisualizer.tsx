@@ -6,18 +6,20 @@ import { InsertionSort } from '../algorithms/InsertionSort';
 import { MergeSort } from '../algorithms/MergeSort';
 import { QuickSort } from '../algorithms/QuickSort';
 import { SelectionSort } from '../algorithms/SelectionSort';
+import Caption from './Caption';
 import Navbar from './Navbar';
 import SortingVisualizer from './SortingVisualizer';
 
 interface Algorithms {
   [name: string]: (arr: number[]) => TraceArray;
 }
+export type AlgorithmTypes = 'Selection Sort' | 'Bubble Sort' | 'Insertion Sort' | 'Merge Sort' | 'Quick Sort';
 
 function AlgorithmVisualizer(): JSX.Element {
   const [array, setArray] = useState<number[]>([]);
   const [arrayLength, setArrayLength] = useState<number>(100);
   const [traces, setTraces] = useState<TraceArray>([]);
-  const [algorithm, setAlgorithm] = useState<string>('Selection Sort');
+  const [algorithm, setAlgorithm] = useState<AlgorithmTypes>('Selection Sort');
 
   const ALGORITHMS: Algorithms = {
     'Selection Sort': SelectionSort,
@@ -35,7 +37,7 @@ function AlgorithmVisualizer(): JSX.Element {
     setArray([...Array(arrayLength)].map(() => Math.floor(Math.random() * (max - min + 1)) + min));
   };
 
-  const handleSetAlgorithm = (name: string) => {
+  const handleSetAlgorithm = (name: AlgorithmTypes) => {
     setAlgorithm(name);
   };
 
@@ -79,6 +81,7 @@ function AlgorithmVisualizer(): JSX.Element {
         handleSetArrayLengh={handleSetArrayLength}
       />
       <SortingVisualizer array={array} traces={traces} />
+      <Caption selectedAlgorithm={algorithm} />
     </Wrapper>
   );
 }

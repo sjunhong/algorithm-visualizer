@@ -1,16 +1,17 @@
 import styled from 'styled-components';
+import { AlgorithmTypes } from './AlgorithmVisualizer';
 import VisualizerController from './VisualizerController';
 
 export interface VisualizerControllerProps {
   handleResetArray: () => void;
-  handleSetAlgorithm: (name: string) => void;
+  handleSetAlgorithm: (name: AlgorithmTypes) => void;
   handleSetArrayLengh: (arrayLength: number) => void;
 }
 
 function Navbar(props: VisualizerControllerProps): JSX.Element {
   return (
     <Wrapper>
-      <img src={`${process.env.PUBLIC_URL}/logo_for_kiosk.svg`} style={{ height: '100%', padding: '20px 20px ' }} />
+      <img src={`${process.env.PUBLIC_URL}/logo_for_kiosk.svg`} style={{ height: '100%', padding: '0.2vw' }} />
       <VisualizerController
         handleResetArray={props.handleResetArray}
         handleSetAlgorithm={props.handleSetAlgorithm}

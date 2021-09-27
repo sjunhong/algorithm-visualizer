@@ -9,6 +9,8 @@ const GlobalStyle = createGlobalStyle`
   
   * {
     box-sizing: border-box;
+    font-size: 2vw;
+    font-family: 'Roboto', sans-serif;
   }
   h2, h3, li, p, a, button, span {
     font-family: 'Roboto', sans-serif;

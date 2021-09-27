@@ -1,6 +1,7 @@
 import { Button, FormControl, MenuItem, Select } from '@material-ui/core';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { AlgorithmTypes } from './AlgorithmVisualizer';
 import { VisualizerControllerProps } from './Navbar';
 
 function VisualizerController(props: VisualizerControllerProps): JSX.Element {
@@ -16,28 +17,13 @@ function VisualizerController(props: VisualizerControllerProps): JSX.Element {
           value={algorithm}
           onChange={(e) => {
             setAlgorithm(e.target.value as string);
-            props.handleSetAlgorithm(e.target.value as string);
+            props.handleSetAlgorithm(e.target.value as AlgorithmTypes);
           }}
-          displayEmpty
-          inputProps={{ 'aria-label': 'Without label' }}
-          style={{ fontSize: '6rem', width: '500px', textAlign: 'center' }}
-          autoWidth={true}
+          style={formControlStyle('17vw')}
         >
           {algorithms.map((algorithm) => (
             <MenuItem key={algorithm} value={algorithm}>
-              <span
-                style={{
-                  display: 'flex',
-                  fontSize: '4rem',
-                  width: '500px',
-                  height: '150px',
-                  fontFamily: 'Roboto',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                {algorithm}
-              </span>
+              <span style={menuItemStyle('17vw')}>{algorithm}</span>
             </MenuItem>
           ))}
         </Select>
@@ -49,49 +35,43 @@ function VisualizerController(props: VisualizerControllerProps): JSX.Element {
             setArrayLength(e.target.value as number);
             props.handleSetArrayLengh(e.target.value as number);
           }}
-          displayEmpty
-          inputProps={{ 'aria-label': 'Without label' }}
-          style={{ fontSize: '6rem', width: '300px', textAlign: 'center' }}
-          autoWidth={true}
+          style={formControlStyle('10vw')}
         >
           {arrayLengths.map((arrayLength) => (
             <MenuItem key={arrayLength} value={arrayLength}>
-              <span
-                style={{
-                  display: 'flex',
-                  fontSize: '4rem',
-                  width: '300px',
-                  height: '150px',
-                  fontFamily: 'Roboto',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                {arrayLength}
-              </span>
+              <span style={menuItemStyle('10vw')}>{arrayLength}</span>
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-      <Button variant="contained" onClick={props.handleResetArray} style={{ minWidth: '400px' }}>
+      <Button variant="contained" onClick={props.handleResetArray} style={{ minWidth: '10vw' }}>
         <span>Reset Array</span>
       </Button>
     </Wrapper>
   );
 }
 
+const formControlStyle = (fromWidth: string): React.CSSProperties => {
+  return { width: fromWidth, textAlign: 'center', fontWeight: 500 };
+};
+
+const menuItemStyle = (menuWidth: string): React.CSSProperties => {
+  return {
+    display: 'flex',
+    width: menuWidth,
+    height: '6vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontWeight: 500,
+  };
+};
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 40%;
+  width: 45vw;
   margin: 0 2.5% 0 0;
-
-  span {
-    font-weight: 500;
-    font-size: 70px;
-    // padding-left: 10px;
-  }
 `;
 
 export default VisualizerController;

@@ -1,5 +1,5 @@
 import { TraceArray, Trace } from '../algorithms/helper';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import SortChart from './SortChart';
 import { Button } from '@material-ui/core';
@@ -19,6 +19,7 @@ function SortingVisualizer(props: SortingVisualizerProps): JSX.Element {
   });
   const [traces, setTraces] = useState<TraceArray>([]);
   const [timeoutIds, setTimeoutIds] = useState<NodeJS.Timeout[]>([]);
+  const isPlaying = useRef<boolean>(false);
 
   useEffect(() => {
     if (visualState.array !== props.array) {
@@ -30,7 +31,7 @@ function SortingVisualizer(props: SortingVisualizerProps): JSX.Element {
       console.log('reset trace');
       setTraces(props.traces);
     }
-
+    isPlaying.current = false;
     clearTimeouts();
   }, [props.array, props.traces]);
 
@@ -38,7 +39,7 @@ function SortingVisualizer(props: SortingVisualizerProps): JSX.Element {
     timeoutIds.forEach((timeout) => {
       clearTimeout(timeout);
     });
-
+    isPlaying.current = false;
     setTimeoutIds([]);
   };
 
@@ -63,27 +64,34 @@ function SortingVisualizer(props: SortingVisualizerProps): JSX.Element {
   };
 
   const run = () => {
-    const timeoutArray: NodeJS.Timeout[] = [];
-    const timer = 20;
+    if (isPlaying.current == false) {
+      isPlaying.current = true;
+      console.log('set playing', isPlaying.current);
+      const timeoutArray: NodeJS.Timeout[] = [];
+      const timer = 30;
 
-    traces.forEach((trace, i) => {
-      const timeoutId = setTimeout(
-        (item) => {
-          _changeVisualState(item);
-        },
-        i * timer,
-        trace,
-      );
+      traces.forEach((trace, i) => {
+        const timeoutId = setTimeout(
+          (item) => {
+            _changeVisualState(item);
+          },
+          i * timer,
+          trace,
+        );
 
+        timeoutArray.push(timeoutId);
+      });
+
+      const timeoutId = setTimeout(clearTimeouts, traces.length * timer);
       timeoutArray.push(timeoutId);
-    });
-
-    const timeoutId = setTimeout(clearTimeouts, traces.length * timer);
-    timeoutArray.push(timeoutId);
-    setTimeoutIds(timeoutArray);
+      setTimeoutIds(timeoutArray);
+    } else {
+      console.log('already playing');
+    }
   };
 
   const reset = () => {
+    isPlaying.current = false;
     clearTimeouts();
     _reset(visualState.array);
   };
@@ -104,7 +112,7 @@ function SortingVisualizer(props: SortingVisualizerProps): JSX.Element {
           <span>Run</span>
         </Button>
         <Button variant="contained" onClick={reset} style={ButtonStyle}>
-          <span>Reset</span>
+          <span>Stop</span>
         </Button>
       </ButtonWrapper>
     </Wrapper>
@@ -125,12 +133,9 @@ const Wrapper = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 10%;
-  padding: 20px;
-  span {
-    font-size: 70px;
-  }
+  width: 100vw;
+  height: 8vh;
+  padding: 1.5vh;
 `;
 
 const ChartWrapper = styled.div`
