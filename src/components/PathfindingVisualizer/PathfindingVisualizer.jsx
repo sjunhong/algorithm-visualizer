@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import React, { Component } from 'react';
 import Node from './Node/Node';
 import { dijkstra } from '../../algorithms/dijkstra';
@@ -6,7 +9,6 @@ import { bfs } from '../../algorithms/bfs';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 
-import './PathfindingVisualizer.css';
 
 export default class PathfindingVisualizer extends Component {
   constructor() {
@@ -14,9 +16,9 @@ export default class PathfindingVisualizer extends Component {
     this.state = {
       grid: [],
       START_NODE_ROW: 5,
-      FINISH_NODE_ROW: 5,
       START_NODE_COL: 5,
-      FINISH_NODE_COL: 15,
+      FINISH_NODE_ROW: 19,
+      FINISH_NODE_COL: 29,
       mousePressed: false,
       ROW_COUNT: 25,
       COLUMN_COUNT: 35,
@@ -412,7 +414,7 @@ const ButtonWrapper = styled.div`
 
 const ChartWrapper = styled.div`
   width: 80%;
-  height: 80%;
+  height: 85%;
   display: flex;
   flex-direction: column;
   justify-content: center; 

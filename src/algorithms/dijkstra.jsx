@@ -1,8 +1,7 @@
-// Returns all nodes in the order in which they were visited.
-// Make nodes point back to their previous node so that we can compute the shortest path
-// by backtracking from the finish node.
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 
-export function dijkstra(grid, startNode, finishNode) {
+export const dijkstra = (grid, startNode, finishNode) => {
   const visitedNodesInOrder = [];
   startNode.distance = 0;
   const unvisitedNodes = getAllNodes(grid); // Q: different from using grid or slice of grid???

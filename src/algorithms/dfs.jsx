@@ -1,18 +1,21 @@
-import Node from '../components/PathfindingVisualizer/Node/Node';
-// Returns all nodes in the order in which they were visited.
-// Make nodes point back to their previous node so that we can compute the shortest path
-// by backtracking from the finish node.
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 
-export function bfs(grid, startNode, finishNode) {
-  let visitedNodesInOrder = [];
-  const nextNodesStack = [startNode];
+export const dfs = (grid, startNode, finishNode) => {
+  const visitedNodesInOrder = [];
+  const nextNodesStack = [];
+  nextNodesStack.push(startNode);
   while (nextNodesStack.length) {
-    const currentNode = nextNodesStack.shift();
-    if (currentNode === finishNode) return visitedNodesInOrder;
+    const currentNode = nextNodesStack.pop();
 
-    if (currentNode && !currentNode.isWall && (currentNode.isStart || !currentNode.isVisited)) {
+    if (currentNode === finishNode) {
+      return visitedNodesInOrder;
+    }
+
+    if (!currentNode.isWall && (currentNode.isStart || !currentNode.isVisited)) {
       currentNode.isVisited = true;
       visitedNodesInOrder.push(currentNode);
+
       const { col, row } = currentNode;
       let nextNode;
       if (row > 0) {
@@ -45,5 +48,4 @@ export function bfs(grid, startNode, finishNode) {
       }
     }
   }
-  // return visitedNodesInOrder;
 }
