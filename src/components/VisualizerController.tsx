@@ -2,14 +2,18 @@ import { Button, FormControl, MenuItem, Select } from '@material-ui/core';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { AlgorithmTypes } from './AlgorithmVisualizer';
-import { VisualizerControllerProps } from './Navbar';
+
+interface VisualizerControllerProps {
+  handleResetArray: () => void;
+  handleSetAlgorithm: (name: AlgorithmTypes) => void;
+  handleSetArrayLengh: (arrayLength: number) => void;
+}
 
 function VisualizerController(props: VisualizerControllerProps): JSX.Element {
   const [algorithm, setAlgorithm] = useState<string>('Selection Sort');
   const [arrayLength, setArrayLength] = useState<number>(100);
   const algorithms = ['Selection Sort', 'Bubble Sort', 'Insertion Sort', 'Merge Sort', 'Quick Sort'];
   const arrayLengths = [10, 50, 100, 200];
-
   return (
     <Wrapper>
       <FormControl margin="none">
@@ -44,15 +48,15 @@ function VisualizerController(props: VisualizerControllerProps): JSX.Element {
           ))}
         </Select>
       </FormControl>
-      <Button variant="contained" onClick={props.handleResetArray} style={{ minWidth: '10vw' }}>
-        <span>Reset Array</span>
+      <Button variant="contained" onClick={props.handleResetArray} style={{ minWidth: '8vw', marginLeft: '1.5vw' }}>
+        <span>Reset</span>
       </Button>
     </Wrapper>
   );
 }
 
 const formControlStyle = (fromWidth: string): React.CSSProperties => {
-  return { width: fromWidth, textAlign: 'center', fontWeight: 500 };
+  return { width: fromWidth, textAlign: 'center', fontWeight: 500, marginLeft: '1.5vw' };
 };
 
 const menuItemStyle = (menuWidth: string): React.CSSProperties => {
@@ -68,7 +72,7 @@ const menuItemStyle = (menuWidth: string): React.CSSProperties => {
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 45vw;
   margin: 0 2.5% 0 0;

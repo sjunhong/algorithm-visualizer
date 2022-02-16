@@ -8,6 +8,7 @@ import { QuickSort } from '../algorithms/QuickSort';
 import { SelectionSort } from '../algorithms/SelectionSort';
 import Caption from './Caption';
 import Navbar from './Navbar';
+import PathfindingVisualizer from './PathfindingVisualizer/PathfindingVisualizer';
 import SortingVisualizer from './SortingVisualizer';
 
 interface Algorithms {
@@ -16,6 +17,7 @@ interface Algorithms {
 export type AlgorithmTypes = 'Selection Sort' | 'Bubble Sort' | 'Insertion Sort' | 'Merge Sort' | 'Quick Sort';
 
 function AlgorithmVisualizer(): JSX.Element {
+  const [isSorting, setIsSorting] = useState<boolean>(true);
   const [array, setArray] = useState<number[]>([]);
   const [arrayLength, setArrayLength] = useState<number>(100);
   const [traces, setTraces] = useState<TraceArray>([]);
@@ -49,6 +51,10 @@ function AlgorithmVisualizer(): JSX.Element {
     resetArray(arrayLength);
   };
 
+  const handleToggleVisualizer = () => {
+    setIsSorting(!isSorting);
+  };
+
   const createTraces = () => {
     const sort = ALGORITHMS[algorithm];
 
@@ -79,9 +85,17 @@ function AlgorithmVisualizer(): JSX.Element {
         handleResetArray={handleResetArray}
         handleSetAlgorithm={handleSetAlgorithm}
         handleSetArrayLengh={handleSetArrayLength}
+        handleToggleVisualizer={handleToggleVisualizer}
+        isSorting={isSorting}
       />
-      <SortingVisualizer array={array} traces={traces} />
-      <Caption selectedAlgorithm={algorithm} />
+      {isSorting === true ? (
+        <>
+          <SortingVisualizer array={array} traces={traces} />
+          <Caption selectedAlgorithm={algorithm} />{' '}
+        </>
+      ) : (
+        <PathfindingVisualizer />
+      )}
     </Wrapper>
   );
 }
